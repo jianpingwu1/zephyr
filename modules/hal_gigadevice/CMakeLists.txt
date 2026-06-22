@@ -1,4 +1,5 @@
 # Copyright (c) 2021 ATL-Electronics
+# Copyright (c) 2026 GigaDevice Semiconductor Inc.
 # SPDX-License-Identifier: Apache-2.0
 
 if(CONFIG_HAS_GD32_HAL)
@@ -54,6 +55,11 @@ endif()
 if(${CONFIG_SOC_SERIES_GD32A50X})
   zephyr_compile_definitions(GD32A50X)
 endif()
+
+# GD32C2X1 series HAL public headers require extra definitions
+  if(${CONFIG_SOC_SERIES_GD32C2X1})
+    zephyr_compile_definitions(GD32C2X1)
+  endif()
 
 # Global includes to be used outside hal_gigadevice
 zephyr_include_directories(${gd32_soc_sys_dir}/include)
